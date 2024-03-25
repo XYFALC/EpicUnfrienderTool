@@ -35,7 +35,8 @@ namespace EpicUnfriender
             MouseController.SetCursorPos(friendsText.X, friendsText.Y+310);
 
             //System.Windows.Forms.Cursor.Position = new System.Drawing.Point(x, y);  -- doet niks?
-
+            //test
+            var a = 20;
         }
     }
 }

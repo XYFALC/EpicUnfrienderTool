@@ -90,6 +90,7 @@ namespace EpicUnfriender
                 controller.TakeScreenshot();
 
                 //Probleem is hij moet nieuwe screenshot maken na eerste timeout. 
+                //test2
             }
             if (timeOut == 5)
             {
