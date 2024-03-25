@@ -65,6 +65,42 @@ namespace EpicUnfriender
         public static Point GetImageCoordinates(string targetImage)
         {
             int timeOut = 0;
+            while (timeOut < 5)
+            {
+                MainController controller = new MainController();
+                controller.TakeScreenshot();
+                Mat inputImage = CvInvoke.Imread("capture.jpg");
+                Mat templateImage = CvInvoke.Imread(targetImage);
+                Mat templateOutput = new Mat();
+                CvInvoke.MatchTemplate(inputImage, templateImage, templateOutput, Emgu.CV.CvEnum.TemplateMatchingType.CcoeffNormed);
+                double minVal = 0.0d;
+                double maxVal = 0.0d;
+                Point minLoc = new Point();
+                Point maxLoc = new Point();
+                Point midLoc = new Point();
+
+                CvInvoke.MinMaxLoc(templateOutput, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+                CvInvoke.Threshold(templateOutput, templateOutput, 0.85, 1, Emgu.CV.CvEnum.ThresholdType.ToZero);
+                midLoc.X = maxLoc.X + (templateImage.Width / 2);
+                midLoc.Y = maxLoc.Y + (templateImage.Height / 2);
+
+                if (maxVal > 0.85)
+                {
+                    Console.WriteLine("Image " + targetImage + " found.");
+                    return midLoc;
+                }
+                timeOut++;
+                Console.WriteLine("Image " + targetImage + " not found attempt "+ timeOut);
+                Thread.Sleep(100);
+            }
+            throw new TimeoutException("Timeout occurred while searching for image: " + targetImage);
+
+        }
+
+
+        public static double CheckImageCoordinates(string targetImage) {
+            MainController controller = new MainController();
+            controller.TakeScreenshot();
             Mat inputImage = CvInvoke.Imread("capture.jpg");
             Mat templateImage = CvInvoke.Imread(targetImage);
             Mat templateOutput = new Mat();
@@ -73,32 +109,11 @@ namespace EpicUnfriender
             double maxVal = 0.0d;
             Point minLoc = new Point();
             Point maxLoc = new Point();
-            while (timeOut < 5)
-            {
-                CvInvoke.MinMaxLoc(templateOutput, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
-                CvInvoke.Threshold(templateOutput, templateOutput, 0.85, 1, Emgu.CV.CvEnum.ThresholdType.ToZero);
-                if (maxVal > 0.85)
-                {
-                    break;
-                }
-                timeOut++;
-                Console.WriteLine("Image " + targetImage + " not found.");
-                Thread.Sleep(1000);
-                MainController controller = new MainController();
-
-                // Call the TakeScreenshot method
-                controller.TakeScreenshot();
-
-                //Probleem is hij moet nieuwe screenshot maken na eerste timeout. 
-                //test2
-            }
-            if (timeOut == 5)
-            {
-                throw new TimeoutException("Timeout occurred while searching for image: " + targetImage);
-            }
-            Console.WriteLine("Image " + targetImage + " found.");
-            return maxLoc;
+            CvInvoke.MinMaxLoc(templateOutput, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+            CvInvoke.Threshold(templateOutput, templateOutput, 0.85, 1, Emgu.CV.CvEnum.ThresholdType.ToZero);
+            return maxVal;
         }
+
     }
 
 }

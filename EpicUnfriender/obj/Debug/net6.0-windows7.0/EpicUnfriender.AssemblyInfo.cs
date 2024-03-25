@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EpicUnfriender")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+231039c4657ca306320cc49298031ad802471167")]
 [assembly: System.Reflection.AssemblyProductAttribute("EpicUnfriender")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EpicUnfriender")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
