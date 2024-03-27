@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using Emgu.CV;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net.NetworkInformation;
 
 
 
@@ -31,6 +32,59 @@ namespace EpicUnfriender
             Graphics captureGraphics = Graphics.FromImage(captureBitmap);
             captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
             captureBitmap.Save(filePath, ImageFormat.Jpeg);
+        }
+        public bool stopworkerThread;
+        public void stopWorker()
+        {
+            stopworkerThread = true;
+        }
+
+        public void UnfriendSequence()
+        {
+            stopworkerThread = false;
+            while (stopworkerThread == false)
+            {
+                if (ImageDetection.CheckImageCoordinates("Add_Friend_Icon.jpg") < 0.95)
+                {
+                    //Click friends menu
+                    System.Drawing.Point friendsButton = ImageDetection.GetImageCoordinates("Friends_Button.jpg");
+                    MouseController.SetCursorPos(friendsButton.X, friendsButton.Y);
+                    MouseController.LeftClick();
+                }
+
+                //Select friend in list
+                System.Drawing.Point friendsText = ImageDetection.GetImageCoordinates("Add_Friend_Icon.jpg");
+                MouseController.SetCursorPos(friendsText.X, friendsText.Y + 310);
+                MouseController.LeftClick();
+
+                //Wait for 'MORE OPTIONS' menu
+                while (ImageDetection.CheckImageCoordinates("More_Options.jpg") < 0.95)
+                {
+                    Thread.Sleep(300);
+                }
+                System.Drawing.Point MoreOptions = ImageDetection.GetImageCoordinates("More_Options.jpg");
+                MouseController.SetCursorPos(MoreOptions.X, MoreOptions.Y);
+                MouseController.LeftClick();
+
+                //Wait for 'REMOVE FRIEND' first prompts
+                while (ImageDetection.CheckImageCoordinates("Remove_Friend.jpg") < 0.95)
+                {
+                    Thread.Sleep(300);
+                }
+                System.Drawing.Point removeFriend = ImageDetection.GetImageCoordinates("Remove_Friend.jpg");
+                MouseController.SetCursorPos(removeFriend.X, removeFriend.Y);
+                //MouseController.LeftClick();
+
+                // Close all tabs until none left            
+                while (ImageDetection.CheckImageCoordinates("Close_Tab.jpg") > 0.95)
+                {
+                    System.Drawing.Point Close_Tab2 = ImageDetection.GetImageCoordinates("Close_Tab.jpg");
+                    MouseController.SetCursorPos(Close_Tab2.X, Close_Tab2.Y);
+                    MouseController.LeftClick();
+                    Thread.Sleep(100);
+                }
+            }
+            return;
         }
     }
 
@@ -96,7 +150,6 @@ namespace EpicUnfriender
             throw new TimeoutException("Timeout occurred while searching for image: " + targetImage);
 
         }
-
 
         public static double CheckImageCoordinates(string targetImage) {
             MainController controller = new MainController();

@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[4.8.1.5350, )"
             },
+            "NHotkey.Wpf": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "OpenCvSharp4": {
               "target": "Package",
               "version": "[4.9.0.20240103, )"
@@ -61,6 +65,10 @@
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "WindowsInput": {
+              "target": "Package",
+              "version": "[6.4.1, )"
             }
           },
           "imports": [

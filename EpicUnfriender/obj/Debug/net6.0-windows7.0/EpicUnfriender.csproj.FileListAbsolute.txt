@@ -55,3 +55,7 @@ C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\bin\Debug\net6.0-windo
 C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\bin\Debug\net6.0-windows7.0\runtimes\win-x86\native\msvcp140_codecvt_ids.dll
 C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\bin\Debug\net6.0-windows7.0\runtimes\win-x86\native\vcruntime140.dll
 C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\obj\Debug\net6.0-windows7.0\EpicUnfriender.sourcelink.json
+C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\obj\Debug\net6.0-windows7.0\EpicUnfriender_Content.g.cs
+C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\bin\Debug\net6.0-windows7.0\NHotkey.dll
+C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\bin\Debug\net6.0-windows7.0\NHotkey.Wpf.dll
+C:\Users\Falco\source\repos\EpicUnfriender\EpicUnfriender\bin\Debug\net6.0-windows7.0\WindowsInput.dll
