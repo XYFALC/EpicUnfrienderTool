@@ -22,6 +22,7 @@ namespace EpicUnfriender
 
     public class MainController
     {
+
         public void TakeScreenshot()
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;

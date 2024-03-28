@@ -13,7 +13,6 @@ namespace EpicUnfriender
     public partial class MainWindow : Window
     {
         // Fields
-
         readonly private MainController controller;
 
         public MainWindow()
@@ -23,14 +22,16 @@ namespace EpicUnfriender
 
             // Refer Maincontroller class
             controller = new MainController();
-
+            LogBox.AppendText("New LogMessage " + "\n");
             // Create hotkeys
             HotkeyManager.Current.AddOrReplace("QPressed", Key.Q, ModifierKeys.Control | ModifierKeys.Alt, StopUnfriending);
 
             // Initiation buttons
             Start.IsEnabled = true;
             Stop.IsEnabled = false;
+            
         }
+
 
         public void StopUnfriending(object? sender, HotkeyEventArgs e)
         {
