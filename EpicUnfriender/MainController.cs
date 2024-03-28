@@ -13,16 +13,13 @@ using Emgu.CV;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.NetworkInformation;
-
-
-
+using Microsoft.VisualBasic.Logging;
 
 namespace EpicUnfriender
 {
 
     public class MainController
-    {
-
+    {           
         public void TakeScreenshot()
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -33,13 +30,14 @@ namespace EpicUnfriender
             Graphics captureGraphics = Graphics.FromImage(captureBitmap);
             captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
             captureBitmap.Save(filePath, ImageFormat.Jpeg);
+
         }
         public bool stopworkerThread;
         public void stopWorker()
         {
             stopworkerThread = true;
         }
-
+        
         public void UnfriendSequence()
         {
             stopworkerThread = false;
@@ -52,30 +50,41 @@ namespace EpicUnfriender
                     MouseController.SetCursorPos(friendsButton.X, friendsButton.Y);
                     MouseController.LeftClick();
                 }
-
+                if (stopworkerThread == true)
+                {
+                    return;
+                }
                 //Select friend in list
                 System.Drawing.Point friendsText = ImageDetection.GetImageCoordinates("Add_Friend_Icon.jpg");
-                MouseController.SetCursorPos(friendsText.X, friendsText.Y + 310);
+                MouseController.SetCursorPos(friendsText.X, friendsText.Y + 290);
                 MouseController.LeftClick();
 
                 //Wait for 'MORE OPTIONS' menu
                 while (ImageDetection.CheckImageCoordinates("More_Options.jpg") < 0.95)
                 {
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
                 }
                 System.Drawing.Point MoreOptions = ImageDetection.GetImageCoordinates("More_Options.jpg");
                 MouseController.SetCursorPos(MoreOptions.X, MoreOptions.Y);
                 MouseController.LeftClick();
 
+                if (stopworkerThread == true)
+                {
+                    return;
+                }
                 //Wait for 'REMOVE FRIEND' first prompts
                 while (ImageDetection.CheckImageCoordinates("Remove_Friend.jpg") < 0.95)
                 {
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
                 }
                 System.Drawing.Point removeFriend = ImageDetection.GetImageCoordinates("Remove_Friend.jpg");
                 MouseController.SetCursorPos(removeFriend.X, removeFriend.Y);
                 //MouseController.LeftClick();
 
+                if (stopworkerThread == true)
+                {
+                    return;
+                }
                 // Close all tabs until none left            
                 while (ImageDetection.CheckImageCoordinates("Close_Tab.jpg") > 0.95)
                 {
@@ -83,6 +92,10 @@ namespace EpicUnfriender
                     MouseController.SetCursorPos(Close_Tab2.X, Close_Tab2.Y);
                     MouseController.LeftClick();
                     Thread.Sleep(100);
+                }
+                if (stopworkerThread == true)
+                {
+                    return;
                 }
             }
             return;
@@ -111,11 +124,12 @@ namespace EpicUnfriender
             // Perform left mouse button up event
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
         }
-
     }
 
     public class ImageDetection
     {
+
+
         //Find the targetImage withtin the screenshot(capture.jpg) and return the x,y coordinates of the targetImage.
         public static Point GetImageCoordinates(string targetImage)
         {
@@ -149,7 +163,6 @@ namespace EpicUnfriender
                 Thread.Sleep(100);
             }
             throw new TimeoutException("Timeout occurred while searching for image: " + targetImage);
-
         }
 
         public static double CheckImageCoordinates(string targetImage) {
