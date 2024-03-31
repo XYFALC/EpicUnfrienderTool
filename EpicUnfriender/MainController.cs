@@ -115,7 +115,7 @@ namespace EpicUnfriender
         // Define mouse event constants
         const uint MOUSEEVENTF_LEFTDOWN = 0x02;
         const uint MOUSEEVENTF_LEFTUP = 0x04;
-
+        //test
         public static void LeftClick()
         {
             // Perform left mouse button down event

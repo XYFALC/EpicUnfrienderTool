@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F6zesZp5nvMxikrKNgNct3wD0fnGNzyau93OBt6NJcS10Dv2+zot/YMgLvrUp2hpP+XLDDzwBwRUhGMSwfI5Gg==",
+  "dgSpecHash": "5Q2HX6C3jLlOVI4lR7YvS1E17+Gqab1kI311kQ1JQHmmd1prGuU9umb+OfUi2k/JhR+rdg4O1jWEvLDKoHJYgA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Falco\\Source\\Repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj",
+  "projectFilePath": "C:\\Users\\Falco\\source\\repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Falco\\.nuget\\packages\\emgu.cv\\4.8.1.5350\\emgu.cv.4.8.1.5350.nupkg.sha512",
     "C:\\Users\\Falco\\.nuget\\packages\\emgu.cv.runtime.windows\\4.8.1.5350\\emgu.cv.runtime.windows.4.8.1.5350.nupkg.sha512",

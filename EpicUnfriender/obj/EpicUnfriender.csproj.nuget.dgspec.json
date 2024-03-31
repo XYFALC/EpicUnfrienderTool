@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Falco\\Source\\Repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj": {}
+    "C:\\Users\\Falco\\source\\repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Falco\\Source\\Repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj": {
+    "C:\\Users\\Falco\\source\\repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Falco\\Source\\Repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj",
+        "projectUniqueName": "C:\\Users\\Falco\\source\\repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj",
         "projectName": "EpicUnfriender",
-        "projectPath": "C:\\Users\\Falco\\Source\\Repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj",
+        "projectPath": "C:\\Users\\Falco\\source\\repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\EpicUnfriender.csproj",
         "packagesPath": "C:\\Users\\Falco\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Falco\\Source\\Repos\\XYFALC\\EpicUnfrienderTool\\EpicUnfriender\\obj\\",
         "projectStyle": "PackageReference",
